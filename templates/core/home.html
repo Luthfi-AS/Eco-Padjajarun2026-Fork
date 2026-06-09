@@ -1,18 +1,38 @@
 {% extends "base.html" %}{% block content %}
-<section class="hero"><div class="hero-content"><span class="pill">25–26 Juli 2026 • Universitas Padjadjaran</span><h1>Padjadjaran Indoor Hockey Festival & Eco Run 2026</h1><p>Event kolaboratif yang menyatukan kompetisi hockey indoor, Eco Run 5K, festival musik, green bazaar, dan gerakan lingkungan berkelanjutan.</p><div class="hero-actions">
-  <a href="{% url 'register' %}" class="btn">Register Now</a>
+<section class="hero">
+  <div class="hero-content">
+    <span class="pill">25–26 Juli 2026 • Universitas Padjadjaran</span>
+    <h1>Padjadjaran Indoor Hockey Festival & Eco Run 2026</h1>
+    <p>
+      Event kolaboratif yang menyatukan kompetisi hockey indoor, Eco Run 5K,
+      festival musik, green bazaar, dan gerakan lingkungan berkelanjutan.
+    </p>
+    <div class="hero-actions">
+      <a href="{% url 'register' %}" class="btn">Register Now</a>
 
-  <a href="{% url 'ticket_list' %}" class="btn outline">Buy Ticket</a>
+      <a href="{% url 'ticket_list' %}" class="btn outline">Buy Ticket</a>
 
-  <a href="{% url 'sponsor' %}" class="btn ghost">Become Sponsor</a>
+      <a href="{% url 'sponsor' %}" class="btn ghost">Become Sponsor</a>
 
-  <a href="https://wa.me/6285559355424?text=Halo%20CS%20Eco%20Padjadjarun%202026%2C%20saya%20ingin%20mendaftar%20kolektif%20atau%20komunitas."
-     target="_blank"
-     class="btn community-btn">
-     Community Register
-  </a>
-</div></div></section>
-<section class="countdown-card"><h2>Countdown Menuju Event</h2><div id="countdown" data-date="2026-07-25T07:00:00+07:00"><div><strong id="days">0</strong><span>Hari</span></div><div><strong id="hours">0</strong><span>Jam</span></div><div><strong id="minutes">0</strong><span>Menit</span></div><div><strong id="seconds">0</strong><span>Detik</span></div></div></section>
+      <a
+        href="https://wa.me/6285559355424?text=Halo%20CS%20Eco%20Padjadjarun%202026%2C%20saya%20ingin%20mendaftar%20kolektif%20atau%20komunitas."
+        target="_blank"
+        class="btn community-btn"
+      >
+        Community Register
+      </a>
+    </div>
+  </div>
+</section>
+<section class="countdown-card">
+  <h2>Countdown Menuju Event</h2>
+  <div id="countdown" data-date="2026-07-25T07:00:00+07:00">
+    <div><strong id="days">0</strong><span>Hari</span></div>
+    <div><strong id="hours">0</strong><span>Jam</span></div>
+    <div><strong id="minutes">0</strong><span>Menit</span></div>
+    <div><strong id="seconds">0</strong><span>Detik</span></div>
+  </div>
+</section>
 <section class="section race-info">
   <h2>Eco Run 5K & Padjadjaran Indoor Hockey Festival</h2>
   <div class="grid three">
@@ -30,14 +50,69 @@
     </div>
   </div>
 </section>
-<section class="section"><h2>Event Highlights</h2><div class="grid five"><div class="card">Indoor Hockey Tournament</div><div class="card">Eco Run 5K</div><div class="card">Festival Musik</div><div class="card">Green Bazaar</div><div class="card">Tree Planting & Waste Management</div></div></section>
-<section class="section green"><h2>Impact & Synergy</h2><p>Target 500 atlet hockey, 5.000 pelari, 5.000+ pengunjung harian, dan 100.000+ digital impressions.</p><div class="grid four"><div class="stat"><strong>500</strong><span>Atlet Hockey</span></div><div class="stat"><strong>5.000</strong><span>Peserta Eco Run</span></div><div class="stat"><strong>5.000+</strong><span>Pengunjung Harian</span></div><div class="stat"><strong>100K+</strong><span>Digital Reach</span></div></div></section>
-<section class="section"><h2>Ticket Categories</h2><div class="grid three">{% for ticket in tickets %}<div class="card ticket"><h3>{{ ticket.name }}</h3><p>{{ ticket.description }}</p>{% if "Booth" in ticket.name or "Bazaar" in ticket.name or "Tenant" in ticket.name %}
-  <a class="btn" href="https://wa.me/6285559355424" target="_blank">
-    Hubungi Contact Person
-  </a>
-{% else %}
-  <strong>Rp{{ ticket.price }}</strong>
-{% endif %}</div>{% empty %}<p>Ticket belum tersedia.</p>{% endfor %}</div><a class="btn center" href="{% url 'buy_ticket' %}">Beli Tiket</a></section>
-<section class="section dark"><h2>Entertainment</h2><p>Lineup 2 hari: Hindia, Bernadya, Juicy Luicy, Sal Priadi, Fiersa Besari, Yura Yunita, For Revenge, Naykilla, Tenxi, DnA, Moluccan Soul, dan lainnya.</p></section>
-<section class="section"><h2>Latest News</h2><div class="grid three">{% for article in articles %}<a class="card link-card" href="{{ article.get_absolute_url }}"><h3>{{ article.title }}</h3><p>{{ article.excerpt }}</p></a>{% endfor %}</div></section>{% endblock %}
+<section class="section">
+  <h2>Event Highlights</h2>
+  <div class="grid five">
+    <div class="card">Indoor Hockey Tournament</div>
+    <div class="card">Eco Run 5K</div>
+    <div class="card">Festival Musik</div>
+    <div class="card">Green Bazaar</div>
+    <div class="card">Tree Planting & Waste Management</div>
+  </div>
+</section>
+<section class="section green">
+  <h2>Impact & Synergy</h2>
+  <p>
+    Target 500 atlet hockey, 5.000 pelari, 5.000+ pengunjung harian, dan
+    100.000+ digital impressions.
+  </p>
+  <div class="grid four">
+    <div class="stat"><strong>500</strong><span>Atlet Hockey</span></div>
+    <div class="stat"><strong>5.000</strong><span>Peserta Eco Run</span></div>
+    <div class="stat">
+      <strong>5.000+</strong><span>Pengunjung Harian</span>
+    </div>
+    <div class="stat"><strong>100K+</strong><span>Digital Reach</span></div>
+  </div>
+</section>
+<section class="section">
+  <h2>Ticket Categories</h2>
+  <div class="grid three">
+    {% for ticket in tickets %}
+    <div class="card ticket">
+      <h3>{{ ticket.name }}</h3>
+      <p>{{ ticket.description }}</p>
+      {% if "Booth" in ticket.name or "Bazaar" in ticket.name or "Tenant" in
+      ticket.name %}
+      <a class="btn" href="https://wa.me/6285559355424" target="_blank">
+        Hubungi Contact Person
+      </a>
+      {% else %}
+      <strong>Rp{{ ticket.price }}</strong>
+      {% endif %}
+    </div>
+    {% empty %}
+    <p>Ticket belum tersedia.</p>
+    {% endfor %}
+  </div>
+  <a class="btn center" href="{% url 'buy_ticket' %}">Beli Tiket</a>
+</section>
+<section class="section dark">
+  <h2>Entertainment</h2>
+  <p>
+    Lineup 2 hari: Hindia, Bernadya, Juicy Luicy, Sal Priadi, Fiersa Besari,
+    Yura Yunita, For Revenge, Naykilla, Tenxi, DnA, Moluccan Soul, dan lainnya.
+  </p>
+</section>
+<section class="section">
+  <h2>Latest News</h2>
+  <div class="grid three">
+    {% for article in articles %}<a
+      class="card link-card"
+      href="{{ article.get_absolute_url }}"
+      ><h3>{{ article.title }}</h3>
+      <p>{{ article.excerpt }}</p></a
+    >{% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -15,30 +15,78 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='TicketCategory',
+            name="TicketCategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=120)),
-                ('description', models.TextField()),
-                ('price', models.PositiveIntegerField()),
-                ('quota', models.PositiveIntegerField(default=100)),
-                ('is_active', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=120)),
+                ("description", models.TextField()),
+                ("price", models.PositiveIntegerField()),
+                ("quota", models.PositiveIntegerField(default=100)),
+                ("is_active", models.BooleanField(default=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order_code', models.CharField(editable=False, max_length=40, unique=True)),
-                ('participant_name', models.CharField(max_length=120)),
-                ('participant_email', models.EmailField(max_length=254)),
-                ('participant_phone', models.CharField(max_length=30)),
-                ('payment_status', models.CharField(choices=[('PENDING', 'Pending'), ('PAID', 'Paid'), ('FAILED', 'Failed'), ('EXPIRED', 'Expired'), ('REFUNDED', 'Refunded')], default='PENDING', max_length=20)),
-                ('qr_code', models.ImageField(blank=True, null=True, upload_to='qr_codes/')),
-                ('checked_in', models.BooleanField(default=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('ticket', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='orders', to='tickets.ticketcategory')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "order_code",
+                    models.CharField(editable=False, max_length=40, unique=True),
+                ),
+                ("participant_name", models.CharField(max_length=120)),
+                ("participant_email", models.EmailField(max_length=254)),
+                ("participant_phone", models.CharField(max_length=30)),
+                (
+                    "payment_status",
+                    models.CharField(
+                        choices=[
+                            ("PENDING", "Pending"),
+                            ("PAID", "Paid"),
+                            ("FAILED", "Failed"),
+                            ("EXPIRED", "Expired"),
+                            ("REFUNDED", "Refunded"),
+                        ],
+                        default="PENDING",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "qr_code",
+                    models.ImageField(blank=True, null=True, upload_to="qr_codes/"),
+                ),
+                ("checked_in", models.BooleanField(default=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "ticket",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="orders",
+                        to="tickets.ticketcategory",
+                    ),
+                ),
             ],
         ),
     ]

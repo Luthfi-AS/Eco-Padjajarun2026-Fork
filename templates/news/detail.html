@@ -1,1 +1,7 @@
-{% extends "base.html" %}{% block content %}<section class="page-header"><h1>{{ article.title }}</h1><p>{{ article.category }} • {{ article.created_at }}</p></section><section class="section article"><p>{{ article.body|linebreaks }}</p></section>{% endblock %}
+{% extends "base.html" %}{% block content %}
+<section class="page-header">
+  <h1>{{ article.title }}</h1>
+  <p>{{ article.category }} • {{ article.created_at }}</p>
+</section>
+<section class="section article"><p>{{ article.body|linebreaks }}</p></section>
+{% endblock %}

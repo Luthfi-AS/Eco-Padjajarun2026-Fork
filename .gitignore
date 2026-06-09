@@ -1,0 +1,24 @@
+to me
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment
+.env
+
+# Database lokal
+db.sqlite3
+
+# Media hasil generate/upload
+media/qr_codes/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/

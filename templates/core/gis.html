@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}<section class="page-header"><h1>Web GIS & Rute Eco Run 5K</h1><p>Start line, finish line, water station, bazaar, parking, dan medical point.</p></section><section class="section"><button class="btn" onclick="useMyLocation()">Gunakan Lokasi Saya</button><p id="geo-status"></p><div id="map"></div></section>{% endblock %}{% block scripts %}<script>const map=L.map('map').setView([-6.925,107.769],15);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);const points = [
+  ["Start Line", -6.92480, 107.76960],
+  ["Finish Line", -6.92480, 107.76960],
+  ["Water Station Point", -6.92690, 107.76860],
+  ["Universitas Padjadjaran", -6.92330, 107.77120],
+  ["GOR / Hockey Venue", -6.92290, 107.77220],
+,["Green Bazaar",-6.9237,107.7695]];points.forEach(p=>L.marker([p[1],p[2]]).addTo(map).bindPopup(p[0]));L.polyline(route, {
+  color: "#007BFF",
+  weight: 6,
+  opacity: 0.9
+}).addTo(map).bindPopup("Rute Eco Run 5K");function useMyLocation(){if(!navigator.geolocation){document.getElementById('geo-status').innerText='Browser tidak mendukung geolocation.';return;}navigator.geolocation.getCurrentPosition(pos=>{const lat=pos.coords.latitude,lng=pos.coords.longitude;L.marker([lat,lng]).addTo(map).bindPopup('Lokasi Anda').openPopup();map.setView([lat,lng],16);document.getElementById('geo-status').innerText=`Lokasi Anda: ${lat.toFixed(5)}, ${lng.toFixed(5)}`;},()=>document.getElementById('geo-status').innerText='Izin lokasi ditolak.');}</script>{% endblock %}

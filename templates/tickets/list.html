@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}<section class="page-header"><h1>Ticketing System</h1><p>Pilih kategori tiket sesuai kebutuhan event.</p></section><section class="section grid three">{% for ticket in tickets %}<div class="card ticket"><h3>{{ ticket.name }}</h3><p>{{ ticket.description }}</p>{% if "Booth" in ticket.name or "Bazaar" in ticket.name or "Tenant" in ticket.name %}
+  <a class="btn" href="https://wa.me/6285559355424" target="_blank">
+    Hubungi Contact Person
+  </a>
+{% else %}
+  <strong>Rp{{ ticket.price }}</strong>
+{% endif %}</div>{% endfor %}</section><section class="section"><a class="btn center" href="{% url 'buy_ticket' %}">Beli Tiket Sekarang</a></section>{% endblock %}

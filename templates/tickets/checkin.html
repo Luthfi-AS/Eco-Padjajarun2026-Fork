@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<section class="page-header"><h1>Check-in Result</h1><p>{{ order.order_code }}</p></section><section class="section"><div class="card"><p>Peserta: {{ order.participant_name }}</p><p>Status pembayaran: {{ order.get_payment_status_display }}</p><p>Check-in: {{ order.checked_in }}</p></div></section>{% endblock %}

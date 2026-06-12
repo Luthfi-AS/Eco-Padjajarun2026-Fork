@@ -30,15 +30,13 @@
         >
           Community </a
         ><a href="{% url 'gis' %}">GIS Map</a
-        ><a href="{% url 'news_list' %}">News</a>{% if user.is_authenticated
-        %}<a href="{% url 'dashboard' %}" class="btn small">Dashboard</a>
+        ><a href="{% url 'news_list' %}">News</a>{% if user.is_authenticated %}<a href="{% url 'dashboard' %}" class="btn small">Dashboard</a>
         <form method="post" action="{% url 'logout' %}" class="logout-form">
           {% csrf_token %}
           <button type="submit" class="logout-btn">Logout</button>
         </form>
         {% else %}<a href="{% url 'login' %}">Login</a
-        ><a href="{% url 'register' %}" class="btn small">Register</a>{% endif
-        %}
+        ><a href="{% url 'register' %}" class="btn small">Register</a>{% endif %}
       </nav>
     </header>
     {% if messages %}

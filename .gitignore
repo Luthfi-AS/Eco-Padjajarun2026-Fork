@@ -1,4 +1,3 @@
-to me
 # Python
 __pycache__/
 *.py[cod]
@@ -9,6 +8,8 @@ __pycache__/
 venv/
 env/
 
+docs/
+
 # Environment
 .env
 
@@ -16,7 +17,18 @@ env/
 db.sqlite3
 
 # Media hasil generate/upload
+media/
 media/qr_codes/
+
+# Hasil export database (berisi data sensitif: hash password, email, token)
+csv_export/
+*.csv
+
+# File rahasia lain
+.env.*
+!.env.example
+*.sqlite3
+*.sqlite3-journal
 
 # OS / Editor
 .DS_Store
